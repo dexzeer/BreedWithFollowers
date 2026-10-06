@@ -29,7 +29,7 @@ The egg goes to the Hatchery like any other, and hatches into a normal child tha
 
 ## Install
 
-**r2modman / Thunderstore Mod Manager:** install *BreedWithFollowers* from Thunderstore.
+**r2modman / Thunderstore Mod Manager:** install *BreedWithFollowers* from its [Thunderstore page](https://thunderstore.io/c/cult-of-the-lamb/p/Carmenlings/BreedWithFollowers/).
 
 **Manual:** install BepInExPack_CultOfTheLamb, then put `BreedWithFollowers.dll` in `BepInEx/plugins/`.
 
