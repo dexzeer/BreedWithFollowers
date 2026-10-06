@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+*.user
+
+# local-only files
+save-backups/
+Untitled.png
+icon-source.png
+
+# Thunderstore package staging
+package/
+*.zip

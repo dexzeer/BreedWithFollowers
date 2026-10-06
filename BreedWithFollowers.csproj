@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>BreedWithFollowers</AssemblyName>
+    <RootNamespace>BreedWithFollowers</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+
+    <!-- Override on the command line if the paths differ: dotnet build -p:GameDir=... -->
+    <GameDir Condition="'$(GameDir)' == ''">D:\CoTL</GameDir>
+    <ProfileDir Condition="'$(ProfileDir)' == ''">$(APPDATA)\r2modmanPlus-local\COTL\profiles\Default</ProfileDir>
+    <ManagedDir>$(GameDir)\Cult Of The Lamb_Data\Managed</ManagedDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(ManagedDir)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Assembly-CSharp-firstpass.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\UnityEngine*.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\spine-unity.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\DOTween*.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Sirenix*.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\I2*.dll" Private="false" />
+    <Reference Include="$(ProfileDir)\BepInEx\core\BepInEx.dll" Private="false" />
+    <Reference Include="$(ProfileDir)\BepInEx\core\0Harmony.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="DeployToProfile" AfterTargets="Build" Condition="Exists('$(ProfileDir)\BepInEx\plugins')">
+    <Copy SourceFiles="$(OutputPath)BreedWithFollowers.dll" DestinationFolder="$(ProfileDir)\BepInEx\plugins\BreedWithFollowers" />
+  </Target>
+
+</Project>

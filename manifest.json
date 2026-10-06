@@ -1,0 +1,9 @@
+{
+  "name": "BreedWithFollowers",
+  "version_number": "2.0.0",
+  "website_url": "https://github.com/dexzeer/BreedWithFollowers",
+  "description": "Let the Lamb breed with a follower through the Mating Tent: pick the Lamb in the tent menu, always accepted, follower carries the egg.",
+  "dependencies": [
+    "BepInEx-BepInExPack_CultOfTheLamb-5.4.2101"
+  ]
+}
