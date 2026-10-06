@@ -1,6 +1,6 @@
 # Breed With Followers
 
-A *Cult of the Lamb* mod that lets the **Lamb** breed with a follower through the **Mating Tent**, using the game's own mating flow.
+A *Cult of the Lamb* mod that lets the Lamb breed with a follower through the Mating Tent, using the game's own mating flow.
 
 The Lamb shows up in the tent's normal follower picker. Pick the Lamb and a follower, and the rest plays out like a regular follower pairing:
 
@@ -14,7 +14,7 @@ The egg goes to the Hatchery like any other, and hatches into a normal child tha
 
 ## Details
 
-- The Lamb always shows **100%** and the mating always succeeds (your followers love you).
+- The Lamb always shows 100% and the mating always succeeds (your followers love you).
 - The follower is always the parent. The child inherits the follower's look.
 - The Lamb appears at the top of the picker (shown as level 10, age 25) wearing your current fleece.
 - Costs 1 Sin, same as normal mating.
@@ -23,17 +23,17 @@ The egg goes to the Hatchery like any other, and hatches into a normal child tha
 
 ## Requirements
 
-- *Cult of the Lamb* with the **Sins of the Flesh** update (v1.3.0, Mating Tent) or later.
+- *Cult of the Lamb* with the Sins of the Flesh update (v1.3.0, Mating Tent) or later.
 - [BepInExPack_CultOfTheLamb](https://thunderstore.io/c/cult-of-the-lamb/p/BepInEx/BepInExPack_CultOfTheLamb/) 5.4.2101.
-- Does **not** need COTL_API.
+- COTL_API is not needed.
 
 ## Install
 
-**r2modman / Thunderstore Mod Manager:** install *BreedWithFollowers* from its [Thunderstore page](https://thunderstore.io/c/cult-of-the-lamb/p/Carmenlings/BreedWithFollowers/).
+r2modman / Thunderstore Mod Manager: install *BreedWithFollowers* from its [Thunderstore page](https://thunderstore.io/c/cult-of-the-lamb/p/Carmenlings/BreedWithFollowers/).
 
-**Manual:** install BepInExPack_CultOfTheLamb, then put `BreedWithFollowers.dll` in `BepInEx/plugins/`.
+Manual: install BepInExPack_CultOfTheLamb, then put `BreedWithFollowers.dll` in `BepInEx/plugins/`.
 
-To uninstall, remove the DLL. Nothing is written to your save by the mod itself. Eggs and children it creates are ordinary game eggs and followers.
+To uninstall, remove the DLL. The mod itself writes nothing to your save. The eggs and children it creates are ordinary game eggs and followers.
 
 ## Troubleshooting
 
@@ -42,7 +42,7 @@ The BepInEx log is `BepInEx/LogOutput.log`. Look for `Breed With Followers 2.0.0
 ## Compatibility
 
 - Windows. The game is the same on every store.
-- Only the **Lamb** is added to the picker. Breeding with the **Goat** (co-op) is not supported.
+- Only the Lamb is added to the picker. Breeding with the Goat (co-op) is not supported.
 - Mods that change the Mating Tent's menu or the follower picker may conflict.
 
 ## Building from source
@@ -58,7 +58,7 @@ The project references the game's `Assembly-CSharp.dll`, the Unity assemblies an
 ## Credits
 
 - [BepInEx](https://github.com/BepInEx/BepInEx) and [HarmonyX](https://github.com/BepInEx/HarmonyX).
-- Written with reference to the game's own Mating Tent, Hatchery and follower-interaction code, so the Lamb's scene reuses vanilla animations and logic.
+- The scene is built from the game's own Mating Tent, Hatchery and follower-interaction code, so it reuses vanilla animations and logic.
 
 *Cult of the Lamb* is by Massive Monster. This is an unofficial fan mod, not affiliated with or endorsed by them, and it contains no game files.
 
