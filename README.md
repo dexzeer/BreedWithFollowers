@@ -1,10 +1,10 @@
 # Breed With Followers
 
-A *Cult of the Lamb* mod that lets the Lamb breed with a follower through the Mating Tent, using the game's own mating flow.
+A *Cult of the Lamb* mod that lets the Lamb (or the Goat, in co-op) breed with a follower through the Mating Tent, using the game's own mating flow.
 
-The Lamb shows up in the tent's normal follower picker. Pick the Lamb and a follower, and the rest plays out like a regular follower pairing:
+Your character shows up in the tent's normal follower picker. Pick them and a follower, and the rest plays out like a regular follower pairing:
 
-- The follower considers the Lamb's offer, accepts, and they kiss.
+- The follower considers the offer, accepts, and they kiss.
 - Both walk into the tent.
 - You pick the egg's traits on the vanilla trait screen: the follower's traits plus two random ones.
 - The follower comes out carrying the egg, naked as in vanilla, and plants it. The Lamb comes out as they went in.
@@ -14,11 +14,11 @@ The egg goes to the Hatchery like any other, and hatches into a normal child tha
 
 ## Details
 
-- The Lamb always shows 100% and the mating always succeeds (your followers love you).
+- The odds always show 100% and the mating always succeeds (your followers love you).
 - The follower is always the parent. The child inherits the follower's look.
-- The Lamb appears at the top of the picker (shown as level 10, age 25) wearing your current fleece.
+- Your character appears at the top of the picker (shown as level 10, age 25) wearing your current fleece, or as the Goat.
 - Costs 1 Sin, same as normal mating.
-- With the Lamb as a partner, the tent opens with just one available follower.
+- With a player as the partner, the tent opens with just one available follower.
 - Follower + follower mating is untouched and still uses the game's own code.
 
 ## Requirements
@@ -37,12 +37,12 @@ To uninstall, remove the DLL. The mod itself writes nothing to your save. The eg
 
 ## Troubleshooting
 
-The BepInEx log is `BepInEx/LogOutput.log`. Look for `Breed With Followers 2.0.0 loaded`. If a patch fails to apply (for example after a game update), it logs `Patch class ... failed` and the rest of the mod keeps working.
+The BepInEx log is `BepInEx/LogOutput.log`. Look for `Breed With Followers 2.1.0 loaded`. If a patch fails to apply (for example after a game update), it logs `Patch class ... failed` and the rest of the mod keeps working.
 
 ## Compatibility
 
 - Windows. The game is the same on every store.
-- Only the Lamb is added to the picker. Breeding with the Goat (co-op) is not supported.
+- Co-op works. The tent adds whichever player opened it, the Lamb or the Goat.
 - Mods that change the Mating Tent's menu or the follower picker may conflict.
 
 ## Building from source

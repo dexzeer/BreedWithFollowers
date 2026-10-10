@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace BreedWithFollowers.Patches
 {
-    /// <summary>Remembers who was picked next to the Lamb when "Mate" is confirmed in the tent menu.</summary>
+    /// <summary>Remembers who was picked next to the player when "Mate" is confirmed in the tent menu.</summary>
     [HarmonyPatch(typeof(UIMatingMenuController), nameof(UIMatingMenuController.ConfirmMatingButtonPress), new Type[0])]
     internal static class Patch_ConfirmMating
     {
@@ -15,13 +15,13 @@ namespace BreedWithFollowers.Patches
             var t = Traverse.Create(__instance);
             FollowerInfo a = t.Field("follower1").GetValue<FollowerInfo>();
             FollowerInfo b = t.Field("follower2").GetValue<FollowerInfo>();
-            if (LambStandIn.IsLamb(a) && b != null && !LambStandIn.IsLamb(b)) PendingPartner = b;
-            else if (LambStandIn.IsLamb(b) && a != null && !LambStandIn.IsLamb(a)) PendingPartner = a;
+            if (PlayerStandIn.IsStandIn(a) && b != null && !PlayerStandIn.IsStandIn(b)) PendingPartner = b;
+            else if (PlayerStandIn.IsStandIn(b) && a != null && !PlayerStandIn.IsStandIn(a)) PendingPartner = a;
             else PendingPartner = null;
         }
     }
 
-    /// <summary>When the pair includes the Lamb, replace the tent's private SexyTimeIE with our scene.</summary>
+    /// <summary>When the pair includes a player (Lamb or Goat), replace the tent's private SexyTimeIE with our scene.</summary>
     [HarmonyPatch(typeof(Interaction_MatingTent), "SexyTimeIE", new Type[0])]
     internal static class Patch_SexyTimeIE
     {
@@ -34,7 +34,7 @@ namespace BreedWithFollowers.Patches
             Follower follower = FollowerManager.FindFollowerByID(partner.ID);
             if (follower == null)
             {
-                Plugin.Log.LogError($"Lamb mating: follower {partner.ID} is not in the world; falling back to vanilla");
+                Plugin.Log.LogError($"Player mating: follower {partner.ID} is not in the world; falling back to vanilla");
                 return true;
             }
             __result = LambMatingScene.Run(__instance, follower);

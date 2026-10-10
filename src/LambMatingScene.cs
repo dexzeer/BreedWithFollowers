@@ -86,7 +86,8 @@ namespace BreedWithFollowers
             ObjectiveManager.CompleteCustomObjective(Objectives.CustomQuestTypes.SendFollowerToMatingTent, info.ID);
 
             // Egg: vanilla builds it from two brains. The Lamb's is the inert stand-in.
-            structureBrain.SetEggInfo(follower.Brain, LambStandIn.InertBrain, 1f);
+            FollowerInfo playerInfo = PlayerStandIn.For(player);
+            structureBrain.SetEggInfo(follower.Brain, PlayerStandIn.InertBrainFor(playerInfo), 1f);
             structureBrain.Data.MatingFailed = false;
             StructuresData.EggData egg = structureBrain.Data.EggInfo;
             // Child takes after the follower: give "parent 2" the follower's look as well.
@@ -94,7 +95,7 @@ namespace BreedWithFollowers
             egg.Parent_2_SkinColor = info.SkinColour;
             egg.Parent_2_SkinVariant = info.SkinVariation;
 
-            yield return RunTraitSelector(info, egg);
+            yield return RunTraitSelector(info, playerInfo, egg);
 
             // Mating is over: the egg is ready, the tent is free again.
             structureBrain.SetEggReady();
@@ -157,9 +158,9 @@ namespace BreedWithFollowers
             follower.State.CURRENT_STATE = StateMachine.State.Idle;
         }
 
-        private static IEnumerator RunTraitSelector(FollowerInfo info, StructuresData.EggData egg)
+        private static IEnumerator RunTraitSelector(FollowerInfo info, FollowerInfo playerInfo, StructuresData.EggData egg)
         {
-            // Same lists vanilla builds: the follower's heritable traits, nothing from the Lamb, two random ones.
+            // Same lists vanilla builds: the follower's heritable traits, nothing from the player, two random ones.
             var followerTraits = new List<FollowerTrait.TraitType>(info.Traits);
             for (int i = followerTraits.Count - 1; i >= 0; i--)
             {
@@ -184,7 +185,7 @@ namespace BreedWithFollowers
 
             UITraitSelector traitSelector = MonoSingleton<UIManager>.Instance.TraitSelectorTemplate.Instantiate();
             traitSelector.Show();
-            traitSelector.Configure(info, LambStandIn.Info, followerTraits, lambTraits, randomTraits, egg);
+            traitSelector.Configure(info, playerInfo, followerTraits, lambTraits, randomTraits, egg);
             traitSelector.TraitsChosen += traits => egg.Traits = traits;
             while (traitSelector != null)
             {
@@ -294,7 +295,7 @@ namespace BreedWithFollowers
             FollowerBrain.SetFollowerCostume(follower.Spine.Skeleton, follower.Brain._directInfoAccess, hooded: false, forceUpdate: true);
             follower.ShowAllFollowerIcons();
             SimulationManager.UnPause();
-            NotificationCentre.Instance.PlayGenericNotificationLocalizedParams("Notifications/MatingSuccessful", follower.Brain.Info.Name, LambStandIn.Info.Name);
+            NotificationCentre.Instance.PlayGenericNotificationLocalizedParams("Notifications/MatingSuccessful", follower.Brain.Info.Name, PlayerStandIn.For(player).Name);
             GameManager.GetInstance().OnConversationEnd();
         }
 

@@ -44,7 +44,7 @@ namespace BreedWithFollowers.Patches
 
         private static void Postfix(SkeletonGraphic skeletonGraphic, FollowerInfo followerInfo)
         {
-            if (skeletonGraphic == null || !LambStandIn.IsLamb(followerInfo)) return;
+            if (skeletonGraphic == null || !PlayerStandIn.IsStandIn(followerInfo)) return;
             try
             {
                 PlayerFarming player = PlayerFarming.Instance;
@@ -54,7 +54,7 @@ namespace BreedWithFollowers.Patches
                 skeletonGraphic.Initialize(true);
 
                 int fleece = DataManager.Instance.PlayerVisualFleece;
-                string skinName = fleece == 1003 ? "Goat" : "Lamb_" + fleece;
+                string skinName = (PlayerStandIn.IsGoat(followerInfo) || fleece == 1003) ? "Goat" : "Lamb_" + fleece;
                 Skin fleeceSkin = skeletonGraphic.Skeleton.Data.FindSkin(skinName);
                 if (fleeceSkin == null)
                 {

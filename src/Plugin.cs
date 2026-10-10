@@ -10,7 +10,7 @@ namespace BreedWithFollowers
     {
         public const string PluginGuid = "dexzeer.cotl.breedwithfollowers";
         public const string PluginName = "Breed With Followers";
-        public const string PluginVersion = "2.0.0";
+        public const string PluginVersion = "2.1.0";
 
         internal static ManualLogSource Log;
 
